@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header" id="header">
+
+        <header class="header" id="header">
         <div class="container">
             <div class="head">
                 <a class="head__logo" href="#">
@@ -16,12 +17,12 @@
                 </a>
                 <ul class="head__menu">
                     <li class="menu__item">
-                        <a class="head__link" href="#">
+                        <a class="head__link" href="#video">
                             Look the video and give a feedback
                         </a>
                     </li>
                     <li class="menu__item">
-                        <a class="head__link" href="#">
+                        <a class="head__link" href="#comment">
                             Leave a comment
                         </a>
                     </li>
@@ -30,10 +31,35 @@
                     <i class="fas fa-phone"></i>
                     +420 777 270 536
                 </a>
+                <a class="head__login" href="{{ login_logout_url }}">
+                    {% if usr %}{{usr}}{% else %}Login{% endif %}
+                </a>
             </div>
         </div>
     </header>
+{% if usr %}
+    <section class="video" id="video">
+        <div class="container">
+            <h2 class="video-title">
+                Look this video and rate it!
+            </h2>
+            <iframe class="iframe" width="75%" height="481" src="https://www.youtube.com/embed/eU8h3CjhFjs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+    <section class="comment" id="comment">
+        <div class="container">
+
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+
+        </div>
+    </footer>
+{% else %}<h1 class="check">Login firstly!</h1>{% endif %}
 
     <script src="static/js/fa.js"></script>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/main.js"></script>
 </body>
 </html>
