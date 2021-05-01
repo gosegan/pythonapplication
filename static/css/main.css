@@ -153,4 +153,23 @@ iframe {
 
 .check {
 	text-align: center;
+	margin-top: 60px;
+}
+
+.mark {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px;
+}
+
+.mark__item {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	height: 60px;
+	width: 60px;
+	background: #fff;
+	border-radius: 10px;
+	font-weight: 700;
+    font-size: 25px;
 }
