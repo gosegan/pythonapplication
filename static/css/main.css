@@ -139,6 +139,10 @@ button, button:hover, button:focus, button:active
 
 .video {
 	padding-top: 60px;
+	margin-bottom: 50px;
+	position: relative;
+	z-index: 5;
+	background: antiquewhite;
 }
 
 .video-title {
@@ -159,7 +163,6 @@ iframe {
 .mark {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 30px;
 }
 
 .mark__item {
@@ -172,4 +175,111 @@ iframe {
 	border-radius: 10px;
 	font-weight: 700;
     font-size: 25px;
+	border: 1px solid #000;
+	cursor: pointer;
+	text-align: center;
+}
+
+.active {
+	border: none;
+	color: #fff;
+	background: #000;
+	box-shadow: 3px 0px 10px rgba(0,0,0,0.25);
+}
+
+.textarea {
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin: 30px auto 0;
+    display: block;
+	padding-left: 10px;
+    padding-top: 5px;
+    background: transparent;
+	width: 400px;
+    height: 80px;
+    font-size: 17px;
+    outline: none;
+}
+
+.submit {
+    width: 150px;
+    height: 39px;
+    margin: 30px auto 0;
+    display: block;
+    background: #000;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 700;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	border: 1px solid transparent;
+}
+
+.submit:hover {
+	background: transparent;
+	color: #000000;
+	border: 1px solid #000;
+}
+
+.addcomment {
+	background: transparent;
+    border: none;
+    color: #f8b45e;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 40px auto 0;
+    cursor: pointer;
+	display: flex;
+    align-items: center;
+}
+
+.addcomment span {
+	font-size: 32px;
+    display: block;
+    margin-left: 10px;
+}
+
+.comment {
+	display: none;
+  	animation: slideUp 1s forwards;
+  	transform: translateY(150%);
+	position: relative;
+	z-index: 3;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(-200%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.reviews {
+	padding: 60px 0;
+	background: burlywood;
+}
+
+.title-review {
+	color: #fff;
+}
+
+.review__item {
+	margin-top: 20px;
+	color: #fff;
+	font-size: 19px;
+}
+
+.review__item span {
+	text-decoration: underline;
+}
+
+.review__item p {
+	margin-bottom: 12px;
+}
+
+.review__item span:last-child {
+	font-weight: 700;
 }

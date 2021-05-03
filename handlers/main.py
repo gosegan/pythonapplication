@@ -1,7 +1,8 @@
 import webapp2
 from webapp2_extras import jinja2
-from time import gmtime, strftime
 from webapp2_extras.users import users
+
+from model.commentData import commentData
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -12,15 +13,43 @@ class MainHandler(webapp2.RequestHandler):
         else:
             login_logout_url = users.create_login_url("/")
 
+        list_data = commentData.query().order(-commentData.hours)
         object = {
-            "fecha": strftime("%Y-%m-%d", gmtime()),
-            "hora": strftime("%H:%M:%S", gmtime()),
             "login_logout_url": login_logout_url,
-            "usr": usr
+            "usr": usr,
+            'list_data': list_data
         }
         jinja = jinja2.get_jinja2(app=self.app)
         self.response.write(
             jinja.render_template("index.html", **object))
+
+    def post(self):
+        comment = self.request.get("text", "anonymous")
+        grade = self.request.get('active')
+        usr = users.get_current_user()
+
+        if usr:
+            nick = usr.nickname()
+            # nick = usr.email()
+            # nick = usr.user_id()
+            # users.is_current_user_admin()
+
+        # Guarder eco
+        comment_data = commentData(text=comment, author=nick, rate=grade)
+        comment_data.put()
+        #time.sleep(1)
+
+        # Recuparar todos los ecos
+        list_data = commentData.query().order(-commentData.hours)
+
+        # Preparar pantilla
+        jinja = jinja2.get_jinja2(app=self.app)
+        data = {
+            'list_data': list_data
+        }
+        self.response.write(
+            jinja.render_template("index.html", **data)
+        )
 
 
 app = webapp2.WSGIApplication([
