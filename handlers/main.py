@@ -1,8 +1,10 @@
+import time
+
 import webapp2
 from webapp2_extras import jinja2
 from webapp2_extras.users import users
 
-from model.commentData import commentData
+from model.commentData import commentData, videoData
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -27,6 +29,7 @@ class MainHandler(webapp2.RequestHandler):
         comment = self.request.get("text", "anonymous")
         grade = self.request.get('active')
         usr = users.get_current_user()
+        vid = 'eU8h3CjhFjs'
 
         if usr:
             nick = usr.nickname()
@@ -37,15 +40,20 @@ class MainHandler(webapp2.RequestHandler):
         # Guarder eco
         comment_data = commentData(text=comment, author=nick, rate=grade)
         comment_data.put()
-        #time.sleep(1)
+
+        # video_data = videoData(video=vid)
+        time.sleep(0.1)
 
         # Recuparar todos los ecos
         list_data = commentData.query().order(-commentData.hours)
+        # list_video = videoData.query()
 
         # Preparar pantilla
         jinja = jinja2.get_jinja2(app=self.app)
         data = {
+            "usr": usr,
             'list_data': list_data
+            # 'list_video': list_video
         }
         self.response.write(
             jinja.render_template("index.html", **data)

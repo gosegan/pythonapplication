@@ -43,8 +43,9 @@
             <h2 class="video-title">
                 Look this video and rate it!
             </h2>
-            <iframe class="iframe" width="75%" height="481" src="https://www.youtube.com/embed/eU8h3CjhFjs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+            <iframe class="iframe" width="75%" height="481" src="https://www.youtube.com/embed/{{ list_video }}"
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+                    encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <button class="addcomment" id="addcomment">
                 Add comment <span>+</span>
             </button>
@@ -85,7 +86,7 @@
                         <input type="text" class="mark__item" value="10" readonly>
                     </label>
                 </div>
-                <textarea class="textarea" name="text" id="text" placeholder="Leave a comment"></textarea>
+                <textarea required class="textarea" name="text" id="text" placeholder="Leave a comment"></textarea>
                 <button class="submit" type="submit">Submit</button>
             </form>
         </div>

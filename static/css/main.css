@@ -270,6 +270,8 @@ iframe {
 	margin-top: 20px;
 	color: #fff;
 	font-size: 19px;
+	padding-bottom: 10px;
+    border-bottom: 1px solid #000;
 }
 
 .review__item span {
@@ -278,6 +280,14 @@ iframe {
 
 .review__item p {
 	margin-bottom: 12px;
+}
+
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 2px solid black;
 }
 
 .review__item span:last-child {
